@@ -25,7 +25,10 @@ function getHumanChoice() {
 // .toLowerCase() converts the input to lowercase to standardize it, so "rock," "Rock," and "ROCK" are treated the same.
 // Validation Loop: A while loop checks if the input is valid. If not, it prompts the user again until a valid input is provided.
 // Capitalizing the First Letter: The return value has the first letter capitalized to match the expected format ("Rock," "Paper," or "Scissors"). This also ensures that it works seamlessly with the rest of your game logic.
-function playRound(playerChoice, computerChoice) {
+
+
+function playGame() {
+  function playRound(playerChoice, computerChoice) {
   pChoice = playerChoice.toLowerCase();
   cChoice = computerChoice.toLowerCase();
 
@@ -57,7 +60,10 @@ function playRound(playerChoice, computerChoice) {
     console.log('You lose! Scissors beats paper!');
   }
 }
-
+  for (let i = 0; i < 5; i++) {
+    playRound(pChoice, cChoice);
+  }
+}
 
 
 let humanScore = 0;
