@@ -62,15 +62,23 @@ function playGame() {
       console.log('You lose! Scissors beats paper!');
     }
   }
-  for (let i = 0; i < 5; i++) {
-    playRound(getComputerChoice(), getHumanChoice())
-  }
+
+  playRound(getComputerChoice(), getHumanChoice())
   console.log(`Human Score: ${humanScore}`, `Computer Score: ${computerScore}`)
   if (humanScore > computerScore) {
     console.log("Human Wins!")
   }
-  else {
+  else if (computerScore > humanScore) {
     console.log("Computer Wins");
   }
+  else {
+    console.log("No winner, tie!");
+  }
 }
-playGame() 
+
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper")
+const scissors = document.querySelector("#scissors");
+
+
+

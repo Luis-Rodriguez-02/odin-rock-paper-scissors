@@ -1,8 +1,40 @@
+* {
+  box-sizing: border-box;
+}
 body {
-  background-color: antiquewhite;
+  background-color: rgb(48, 53, 134);
 }
 
 h1 {
   color: black;
   font-family:'Times New Roman', Times, serif';
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  border-radius: 5px;
+  width: 25px;
+  margin: 10px;
+  padding: 25px;
+  text-transform: capitalize;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: large;
+  background-color: rgb(173, 173, 173);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.buttons:hover {
+  transform: scale(1.1);
 }
