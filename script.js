@@ -23,9 +23,6 @@ Math.random() * 3 generates a decimal between 0 and 3 (but less than 3).
 Math.floor(Math.random() * 3) converts this into an integer 0, 1, or 2.
 Adding 1 shifts the range to 1, 2, or 3, which corresponds to "Rock," "Paper," or "Scissors."
 */
-function getHumanChoice(userChoice) {
-  return userChoice;
-}
 // .toLowerCase() converts the input to lowercase to standardize it, so "rock," "Rock," and "ROCK" are treated the same.
 // Validation Loop: A while loop checks if the input is valid. If not, it prompts the user again until a valid input is provided.
 // Capitalizing the First Letter: The return value has the first letter capitalized to match the expected format ("Rock," "Paper," or "Scissors"). This also ensures that it works seamlessly with the rest of your game logic.
@@ -36,36 +33,55 @@ function playRound(playerChoice, computerChoice){
 
 
   if (pChoice === cChoice) {
-    console.log('It\'s a tie!');
+    roundResults.textContent = "It's a tie!";
   }
   else if (pChoice === 'rock' && cChoice === 'scissors') {
     humanScore++;
-    console.log('You win! Rock beats scissors!');
+    roundResults.textContent = 'You win! Rock beats scissors!';
   }
   else if (pChoice === 'paper' && cChoice === 'rock') {
     humanScore++;
-    console.log('You win! Paper beats rock!');
+    roundResults.textContent = 'You win! Paper beats rock!';
   }
   else if (pChoice === 'scissors' && cChoice === 'paper') {
     humanScore++;
-    console.log('You win! Scissors beats paper!');
+    roundResults.textContent = 'You win! Scissors beats paper!';
   }
   else if (cChoice === 'rock' && pChoice === 'scissors') {
     computerScore++;
-    console.log('You lose! Rock beats scissors!');
+    roundResults.textContent = 'You lose! Rock beats scissors!';
   }
   else if (cChoice === 'paper' && pChoice === 'rock') {
     computerScore++;
-    console.log('You lose! Paper beats rock!')
+    roundResults.textContent = 'You lose! Paper beats rock!';
   }
   else if (cChoice === 'scissors' && pChoice === 'paper') {
     computerScore++;
-    console.log('You lose! Scissors beats paper!');
+    roundResults.textContent = 'You lose! Scissors beats paper!';
   }
+
+  if (humanScore === 5) {
+    roundResults.textContent = "Game over! You Won!!!";
+    humanScore = 0, computerScore = 0
+  }
+  else if (computerScore === 5) {
+    roundResults.textContent = "Game over! You Lost!!!";
+    humanScore = 0, computerScore = 0;
+  }
+
+  playerRunningScore.textContent = `Player Score: ${humanScore}`;
+  computerRunningScore.textContent = `Computer Score: ${computerScore}`;
 }
 
 function playGame() {
-
+  buttons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+        let choice = event.target.id;
+        playRound(choice, getComputerChoice());
+  
+    })
+  })
+  
 }
 
 const rock = document.querySelector("#rock");
@@ -74,10 +90,8 @@ const scissors = document.querySelector("#scissors");
 
 const buttons = document.querySelectorAll(".buttons")
 
-buttons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-      let choice = event.target.id;
-      playRound(getHumanChoice(choice), getComputerChoice());
-  })
-})
+let playerRunningScore = document.querySelector("#player-score");
+let computerRunningScore = document.querySelector("#computer-score");
+let roundResults = document.querySelector("#round-results");
 
+playGame();
