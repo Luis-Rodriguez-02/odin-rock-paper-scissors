@@ -12,6 +12,13 @@
 
 function getComputerChoice() {
   const choiceArr = ["rock", "paper", "scissors"]; // Array holding choices from index 0 to 2
-  const randNum = Math.random() * 3; // Generates random number from 0 to 3 not including 3
+  const randNum = Math.trunc(Math.random() * 3); // Generates random number from 0 to 3 not including 3
   return choiceArr[randNum]; // returns choice using random number as index.
 }
+
+function getHumanChoice() {
+  const humanChoice = prompt("Rock, paper, or scissors?"); // Prompts user to enter a choice
+  return humanChoice; // returns the choice as a string
+}
+
+console.log(getHumanChoice());
